@@ -1,0 +1,11 @@
+apiVersion: getambassador.io/v2
+kind:  Module
+metadata:
+  name:  plugin-demo
+spec:
+  config:
+    server_name: plugin-demo
+    lua_scripts: |
+      function envoy_on_response(response_handle)
+        response_handle:headers():add("You-found-the", "Secret")
+      end
